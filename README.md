@@ -8,7 +8,7 @@ This repo contains the music-service and the UI Test.docx file with instructions
 # Instructions
 1) Clone this repo.
 2) start the server:
-    $ cd service
+    $ cd music-service
     $ docker-compose up
 4) Test the service
     $ curl localhost:5000/albums
