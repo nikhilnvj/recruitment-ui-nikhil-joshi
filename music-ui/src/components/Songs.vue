@@ -13,7 +13,7 @@ const params = ref({
     _sort:'id',
     _order: 'asc'
 })
-const loadArtists = async ()=>{
+const loadSongs = async ()=>{
     try {
         loading.value=true
         const res = await getSongs({
@@ -25,11 +25,34 @@ const loadArtists = async ()=>{
     }
 }
 
-loadArtists()
+const onPageChange = (page)=>{
+    params.value={
+        ...params.value,
+        _page: page
+    }
+    loadSongs()
+}
+
+const onSort = (direction, column)=>{
+    params.value={
+        ...params.value,
+        _sort:column,
+        _order: direction
+    }
+    loadSongs()
+}
+
+loadSongs()
 </script>
 
 <template>
     <div class="flex justify-center">
-        <DataTable :columns="cols" :loading="loading" :data="songs" />
+        <DataTable
+            :total-items="93"
+            :columns="cols"
+            :loading="loading"
+            :data="songs"
+            @page-change="onPageChange"
+            @sort="onSort"/>
     </div>
 </template>

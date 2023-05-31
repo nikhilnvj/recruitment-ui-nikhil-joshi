@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-const base = "http://localhost:5001"
-
 const instance = axios.create({
-    baseURL: 'http://localhost:5001/',
+    baseURL: 'http://localhost:5000/',
     headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'}
 });
 export const getAlbums = (params)=>{

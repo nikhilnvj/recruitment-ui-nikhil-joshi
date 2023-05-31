@@ -25,11 +25,34 @@ const loadArtists = async ()=>{
   }
 }
 
+const onPageChange = (page)=>{
+  params.value={
+    ...params.value,
+    _page: page
+  }
+  loadArtists()
+}
+
+const onSort = (direction, column)=>{
+    params.value={
+        ...params.value,
+        _sort:column,
+        _order: direction
+    }
+    loadArtists()
+}
+
 loadArtists()
 </script>
 
 <template>
 <div class="flex justify-center">
-<DataTable :columns="cols" :loading="loading" :data="artists" />
+<DataTable
+  :total-items="6"
+  :columns="cols"
+  :loading="loading"
+  :data="artists"
+  @page-change="onPageChange"
+  @sort="onSort" />
 </div>
 </template>
